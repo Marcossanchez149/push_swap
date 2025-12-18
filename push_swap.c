@@ -6,11 +6,67 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 12:50:49 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/09 17:03:16 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:18:33 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	specialcase(t_stack *stack_a)
+{
+	t_stack	*temp;
+
+	temp = stack_a->next;
+	if (stack_a->value > temp->value)
+		sa(&stack_a, 1);
+}
+
+void	smallsort(t_stack *stack_a)
+{
+	t_stack	*first;
+	t_stack	*medium;
+	t_stack	*last;
+
+	first = stack_a;
+	medium = first->next;
+	last = medium->next;
+	if ((first->value > medium->value) && (first->value > last->value))
+		ra(&stack_a, 1);
+	else if ((medium->value > last->value) && (medium->value > first->value))
+		rra(&stack_a, 1);
+	if ((first->value > medium->value))
+		sa(&stack_a, 1);
+}
+
+void	ordenator(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	send_tob(stack_a, stack_b, size);
+	smallsort(stack_a[0]);
+	while (*stack_b)
+	{
+		get_final_position(stack_a, stack_b);
+		get_cost(stack_a, stack_b);
+		do_cheapest_move(stack_a, stack_b);
+	}
+	if (!is_sorted(*stack_a))
+		shift_stack(stack_a);
+}
+
+void	sorting(char **argv, int size)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = inicialice_stack(return_numbers(argv, size), size);
+	assign_index(stack_a, size, return_numbers(argv, size));
+	stack_b = NULL;
+	if (size == 2)
+		specialcase(stack_a);
+	if (size == 3)
+		smallsort(stack_a);
+	else
+		ordenator (&stack_a, &stack_b, size);
+}
 
 int	main(int argc, char **argv)
 {
@@ -27,21 +83,4 @@ int	main(int argc, char **argv)
 		sorting(argv, size);
 	}
 	return (0);
-}
-
-void	sorting(char **argv, int size)
-{
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		*converted;
-
-	converted = return_numbers(argv, size);
-	if (size == 3 || size == 5)
-		specialcase(argv, size);
-	
-}
-
-void	specialcase(char **argv, int size)
-{
-	
 }

@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:45:43 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/09 16:58:43 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:00:55 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,14 @@ int	search_duplicates(char **argv, int size)
 		}
 		i ++;
 	}
+	return (1);
 }
 
 int	check_numbers(char **argv)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		if (!is_a_number(argv[i]))
@@ -57,7 +58,7 @@ int	check_numbers(char **argv)
 	}
 	if (search_duplicates(argv, i))
 		return (0);
-	return (i);
+	return (i -1);
 }
 
 int	size_matrix(char **argv)

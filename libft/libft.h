@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:18:28 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/09 11:25:51 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:48:59 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@
 # include <stdarg.h>
 # include <limits.h>
 
-typedef struct s_list
+typedef struct s_stack
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	int				value;
+	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
+	struct s_stack	*next;
+}	t_stack;
 
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(char letter);
@@ -64,15 +69,15 @@ int		ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_stack	*ft_lstnew(int content);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
+int		ft_lstsize(t_stack *lst);
+t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
+void	ft_lstdelone(t_stack *lst, void (*del)(int));
+void	ft_lstclear(t_stack **lst, void (*del)(int));
+void	ft_lstiter(t_stack *lst, void (*f)(int));
+t_stack	*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int));
 int		ft_printf(char const *str, ...);
 int		printstr(char	*towrite);
 int		ft_strlen(const char *str);

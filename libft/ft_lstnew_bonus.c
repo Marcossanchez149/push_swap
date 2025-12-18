@@ -6,21 +6,21 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 12:08:02 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/10/23 15:33:19 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/18 11:54:37 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //Creates new node and adds content
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_stack	*ft_lstnew(int content)
 {
-	t_list	*lis;
+	t_stack	*lis;
 
-	lis = (t_list *)malloc(sizeof(t_list));
+	lis = (t_stack *)malloc(sizeof(t_stack));
 	if (!lis)
 		return (NULL);
-	lis->content = content;
+	lis->value = content;
 	lis->next = NULL;
 	return (lis);
 }

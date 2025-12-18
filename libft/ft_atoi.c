@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 14:29:07 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/09 11:27:26 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/18 11:51:40 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ int	ft_atoi(const char *str)
 	neg = 0;
 	cont = 0;
 	to_return = 0;
-	while (str[cont] == ' ' || str[cont] == '\n'
-		|| str[cont] == '\r' || str[cont] == '\t'
-		|| str[cont] == '\f' || str[cont] == '\v')
+	while (str[cont] == ' ' || str[cont] == '\n' || str[cont] == '\r'
+		|| str[cont] == '\t' || str[cont] == '\f' || str[cont] == '\v')
 		cont++;
 	if (str[cont] == '+' || str[cont] == '-')
 	{
