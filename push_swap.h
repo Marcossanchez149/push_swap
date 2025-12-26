@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 14:41:15 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/18 16:34:26 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/26 16:01:56 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-
 
 int		check_numbers(char **argv);
 int		*return_numbers(char **argv, int size);
@@ -45,5 +44,6 @@ void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 int		is_sorted(t_stack *stack);
 void	shift_stack(t_stack **stack_a);
-
+char	*ft_atoicheck(const char *str);
+void	free_stack(t_stack **stack);
 #endif

@@ -6,42 +6,49 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 12:50:49 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/18 16:18:33 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/26 16:03:00 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	specialcase(t_stack *stack_a)
+void	specialcase(t_stack **stack_a)
 {
-	t_stack	*temp;
+	t_stack	*first;
+	t_stack	*second;
 
-	temp = stack_a->next;
-	if (stack_a->value > temp->value)
-		sa(&stack_a, 1);
+	if (!stack_a || !(*stack_a) || !(*stack_a)->next)
+		return ;
+	first = *stack_a;
+	second = first->next;
+	if (first->value > second->value)
+		sa(stack_a, 1);
 }
 
-void	smallsort(t_stack *stack_a)
+void	smallsort(t_stack **stack_a)
 {
 	t_stack	*first;
 	t_stack	*medium;
 	t_stack	*last;
 
-	first = stack_a;
+	first = *stack_a;
 	medium = first->next;
 	last = medium->next;
 	if ((first->value > medium->value) && (first->value > last->value))
-		ra(&stack_a, 1);
+		ra(stack_a, 1);
 	else if ((medium->value > last->value) && (medium->value > first->value))
-		rra(&stack_a, 1);
+		rra(stack_a, 1);
+	first = *stack_a;
+	medium = first->next;
+	last = medium->next;
 	if ((first->value > medium->value))
-		sa(&stack_a, 1);
+		sa(stack_a, 1);
 }
 
 void	ordenator(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	send_tob(stack_a, stack_b, size);
-	smallsort(stack_a[0]);
+	smallsort(stack_a);
 	while (*stack_b)
 	{
 		get_final_position(stack_a, stack_b);
@@ -59,13 +66,17 @@ void	sorting(char **argv, int size)
 
 	stack_a = inicialice_stack(return_numbers(argv, size), size);
 	assign_index(stack_a, size, return_numbers(argv, size));
+	if (!stack_a)
+		return ;
 	stack_b = NULL;
 	if (size == 2)
-		specialcase(stack_a);
-	if (size == 3)
-		smallsort(stack_a);
+		specialcase(&stack_a);
+	else if (size == 3)
+		smallsort(&stack_a);
 	else
 		ordenator (&stack_a, &stack_b, size);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -80,7 +91,8 @@ int	main(int argc, char **argv)
 			ft_printf("Error\n");
 			return (0);
 		}
-		sorting(argv, size);
+		if (!(size == 1))
+			sorting(argv, size);
 	}
 	return (0);
 }

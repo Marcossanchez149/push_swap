@@ -6,18 +6,17 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:45:43 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/18 17:00:55 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/26 16:14:04 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 int	is_a_number(char *num)
 {
-	int	converted;
+	char	*converted;
 
-	converted = ft_atoi(num);
+	converted = ft_atoicheck(num);
 	if (!converted)
 		return (0);
 	return (1);
@@ -31,17 +30,23 @@ int	search_duplicates(char **argv, int size)
 
 	i = 0;
 	nums = return_numbers(argv, size);
-	while (i < size)
+	if (!nums)
+		return (0);
+	while (i < size - 1)
 	{
-		j = i;
-		while (j < size)
+		j = i + 1;
+		while (j < size - 1)
 		{
 			if (nums[i] == nums[j])
+			{
+				free(nums);
 				return (0);
+			}
 			j ++;
 		}
 		i ++;
 	}
+	free (nums);
 	return (1);
 }
 
@@ -53,10 +58,12 @@ int	check_numbers(char **argv)
 	while (argv[i])
 	{
 		if (!is_a_number(argv[i]))
+		{
 			return (0);
+		}
 		i++;
 	}
-	if (search_duplicates(argv, i))
+	if (!search_duplicates(argv, i))
 		return (0);
 	return (i -1);
 }

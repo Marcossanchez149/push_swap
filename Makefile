@@ -6,7 +6,7 @@
 #    By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/04 16:33:24 by marcsan2          #+#    #+#              #
-#    Updated: 2025/12/18 16:37:26 by marcsan2         ###   ########.fr        #
+#    Updated: 2025/12/26 16:03:26 by marcsan2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LDFLAGS = -L./libft -lft
 INCLUDE = -I. #(dir act) 
 SRC_FILES = push_swap.c checker.c func.c push_stack.c reverse_rotate.c rotate_stack.c \
 sorting_functions.c swap_stack.c final_rotate.c movements.c second_sorting_functions.c \
-
+atoichecker.c free_stack.c
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 
 .PHONY: all clean fclean re

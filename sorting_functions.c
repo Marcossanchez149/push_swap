@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 13:58:03 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/18 11:50:23 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/26 15:50:45 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	get_target(t_stack **stack, int index)
 	}
 	if (target == 2147483647)
 		return (get_min_pos(stack));
+	if (target_node == NULL)
+		return (get_min_pos(stack));
 	return (target_node->pos);
 }
 
@@ -92,7 +94,6 @@ void	get_final_position(t_stack **stack_a, t_stack **stack_b)
 	tmp_b = *stack_b;
 	get_position(stack_a);
 	get_position(stack_b);
-
 	while (tmp_b)
 	{
 		target_pos = get_target(stack_a, tmp_b->index);

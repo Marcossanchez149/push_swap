@@ -6,24 +6,26 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:24:30 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/18 11:49:33 by marcsan2         ###   ########.fr       */
+/*   Updated: 2025/12/26 12:47:17 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 int	*return_numbers(char **argv, int size)
 {
 	int	i;
+	int	j;
 	int	*numbers;
 
 	i = 1;
+	j = 0;
 	numbers = malloc(sizeof(int) * size);
 	while (argv[i])
 	{
-		numbers[i] = ft_atoi(argv[i]);
+		numbers[j] = ft_atoi(argv[i]);
 		i++;
+		j++;
 	}
 	return (numbers);
 }
@@ -44,7 +46,6 @@ t_stack	*ft_lstnew_stack(int content)
 	lis->target_pos = 0;
 	return (lis);
 }
-
 
 t_stack	*inicialice_stack(int *argv, int size)
 {
