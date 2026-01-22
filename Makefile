@@ -6,28 +6,28 @@
 #    By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/04 16:33:24 by marcsan2          #+#    #+#              #
-#    Updated: 2025/12/26 16:03:26 by marcsan2         ###   ########.fr        #
+#    Updated: 2026/01/13 17:48:26 by marcsan2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.a
 EXEC = push_swap
-CC = cc 
-CFLAGS = -Wall -Wextra -Werror -I. -I./libft
-LDFLAGS = -L./libft -lft
+CC = cc -g
+CFLAGS = -Wall -Wextra -Werror -I. -I./libftps
+LDFLAGS = -L./libftps -lft
 INCLUDE = -I. #(dir act) 
 SRC_FILES = push_swap.c checker.c func.c push_stack.c reverse_rotate.c rotate_stack.c \
 sorting_functions.c swap_stack.c final_rotate.c movements.c second_sorting_functions.c \
-atoichecker.c free_stack.c
+atoichecker.c free_stack.c control_str.c
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 
 .PHONY: all clean fclean re
 
 all: $(NAME) $(EXEC)
-	 $(MAKE) -C libft
+	 $(MAKE) -C libftps
 
 $(NAME): $(OBJ_FILES) # no relink
-	$(MAKE) -C libft
+	$(MAKE) -C libftps
 	ar rcs $(NAME) $(OBJ_FILES)
 
 $(EXEC): $(OBJ_FILES)
@@ -38,12 +38,12 @@ $(EXEC): $(OBJ_FILES)
 
 clean: #clean .o
 	rm -f $(OBJ_FILES)
-	$(MAKE) -C libft clean
+	$(MAKE) -C libftps clean
 	
 fclean: #clean all
 	rm -f $(NAME) $(OBJ_FILES)
-	$(MAKE) -C libft fclean
+	$(MAKE) -C libftps fclean
 	
 re: fclean all #clean and remake
 
-.PHONY: all clean fclean re bonus 
+.PHONY: all clean fclean re 

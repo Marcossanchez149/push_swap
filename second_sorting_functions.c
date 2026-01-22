@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:56:20 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/26 15:53:38 by marcsan2         ###   ########.fr       */
+/*   Updated: 2026/01/13 13:05:17 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,12 @@ int	nb_abs(int nb)
 	return (nb);
 }
 
-t_stack	*get_cheapest_node(t_stack *stack_b)
+t_stack	*get_cheapest_node(t_stack *stack_b, int min_cost)
 {
 	t_stack	*cheapest_node;
-	int		min_cost;
 	int		current_cost;
 
 	cheapest_node = NULL;
-	min_cost = INT_MAX;
 	while (stack_b)
 	{
 		if ((stack_b->cost_a > 0 && stack_b->cost_b > 0)

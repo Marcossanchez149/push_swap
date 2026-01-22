@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:45:43 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/26 16:14:04 by marcsan2         ###   ########.fr       */
+/*   Updated: 2026/01/14 10:44:00 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	is_a_number(char *num)
 {
-	char	*converted;
+	int		converted;
 
 	converted = ft_atoicheck(num);
-	if (!converted)
+	if (converted == 0)
 		return (0);
 	return (1);
 }
@@ -74,8 +74,6 @@ int	size_matrix(char **argv)
 
 	i = 0;
 	while (argv[i])
-	{
 		i ++;
-	}
 	return (i);
 }

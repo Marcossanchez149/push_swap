@@ -6,13 +6,13 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 14:41:15 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/26 16:01:56 by marcsan2         ###   ########.fr       */
+/*   Updated: 2026/01/15 12:51:25 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "libft/libft.h"
+# include "libftps/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -39,11 +39,13 @@ void	assign_index(t_stack *stack_a, int size, int *nums);
 void	get_final_position(t_stack **stack_a, t_stack **stack_b);
 void	get_cost(t_stack **stack_a, t_stack **stack_b);
 int		get_stack_size(t_stack *stack);
-t_stack	*get_cheapest_node(t_stack *stack_b);
+t_stack	*get_cheapest_node(t_stack *stack_b, int min_cost);
 void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b);
 int		is_sorted(t_stack *stack);
 void	shift_stack(t_stack **stack_a);
-char	*ft_atoicheck(const char *str);
+int		ft_atoicheck(const char *str);
 void	free_stack(t_stack **stack);
+char	**generate_new_argv(char *prog_name, char *arg_str);
+void	free_argv(char **argv);
 #endif

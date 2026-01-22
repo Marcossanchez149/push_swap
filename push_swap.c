@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 12:50:49 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/26 16:03:00 by marcsan2         ###   ########.fr       */
+/*   Updated: 2026/01/15 14:23:52 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ void	sorting(char **argv, int size)
 	assign_index(stack_a, size, return_numbers(argv, size));
 	if (!stack_a)
 		return ;
+	if (is_sorted(stack_a))
+	{
+		free_stack(&stack_a);
+		return ;
+	}
 	stack_b = NULL;
 	if (size == 2)
 		specialcase(&stack_a);
@@ -82,17 +87,24 @@ void	sorting(char **argv, int size)
 int	main(int argc, char **argv)
 {
 	int	size;
+	int	controler;
 
-	if (argc > 1)
+	controler = 0;
+	if (argc < 2)
+		return (0);
+	if (argc == 2)
 	{
-		size = check_numbers(argv);
-		if (size == 0)
-		{
-			ft_printf("Error\n");
-			return (0);
-		}
-		if (!(size == 1))
-			sorting(argv, size);
+		argv = generate_new_argv(argv[0], argv[1]);
+		controler = 1;
 	}
+	if (!argv)
+		return (0);
+	size = check_numbers(argv);
+	if (size == 0)
+		ft_printf("Error\n");
+	else if (!(size == 1))
+		sorting(argv, size);
+	if (controler)
+		free_argv(argv);
 	return (0);
 }

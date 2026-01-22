@@ -6,7 +6,7 @@
 /*   By: marcsan2 <marcsan2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:42:33 by marcsan2          #+#    #+#             */
-/*   Updated: 2025/12/18 16:41:23 by marcsan2         ###   ########.fr       */
+/*   Updated: 2026/01/13 13:03:11 by marcsan2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*cheapest_node;
 
-	cheapest_node = get_cheapest_node(*stack_b);
+	cheapest_node = get_cheapest_node(*stack_b, INT_MAX);
 	if (cheapest_node)
 	{
 		do_move(stack_a, stack_b, cheapest_node->cost_a, cheapest_node->cost_b);
